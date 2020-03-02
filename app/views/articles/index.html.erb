@@ -17,6 +17,11 @@
           <div class="card-text">
             <%= truncate(article.description,length: 100)%>
           </div>
+          <small class="card-text">
+              Created by :  <%= article.user.username if article.user %>,
+              <%= time_ago_in_words(article.created_at)%> ,
+              last update <%= time_ago_in_words(article.updated_at)%> ago,
+            </small>
           <div class="article-actions" align="center">
           <%= link_to "Show Article", article_path(article), class: "card-link" %>
           <%= link_to "Edit Article", edit_article_path(article), class: "card-link" %>
