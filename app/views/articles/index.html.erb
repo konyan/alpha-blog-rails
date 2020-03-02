@@ -1,33 +1,34 @@
-<h1>
-Article List Page
-</h1>
-<p>
-<%= link_to "Create New Article", new_article_path%>
+
+<p align="center">
+  <%= link_to "Create New Article", new_article_path%>
 </p>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
+<h1 align="center">
+  Article List Page
+</h1>
 
-  <% @articles.each do |article| %>
-    <tr>
-      <td>
-        <%= article.title %>
-      </td>
-      <td>
-        <%= article.description %>
-      </td>
-      <td>
-        <%= link_to "Edit", edit_article_path(article)%>
-      </td>
-      <td>
-        <%= link_to 'Show', article_path(article)%>
-      </td>
-      <td>
-        <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"} %>
-      </td>
-    </tr>
-  <% end %>
+<% @articles.each do |article|%>
+  <div class="row">
+    <div class="col-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <%= link_to article.title, article_path(article)%>
+          </div>
+          <div class="card-text">
+            <%= truncate(article.description,length: 100)%>
+          </div>
+          <div class="article-actions" align="center">
+          <%= link_to "Show Article", article_path(article), class: "card-link" %>
+          <%= link_to "Edit Article", edit_article_path(article), class: "card-link" %>
+          <%= link_to "Delete Article", article_path(article), method: :delete,
+                                      data: {confirm: "Are your sure, you want to delete article?"},
+                                      class: "card-link" %>
+          </div>
+        </div>
 
-</table>
+
+
+      </div>
+    </div>
+  </div>
+<% end %>
