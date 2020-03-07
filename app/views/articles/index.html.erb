@@ -6,34 +6,4 @@
   Article List Page
 </h1>
 
-<% @articles.each do |article|%>
-  <div class="row">
-    <div class="col-8 offset-md-2">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">
-            <%= link_to article.title, article_path(article)%>
-          </div>
-          <div class="card-text">
-            <%= truncate(article.description,length: 100)%>
-          </div>
-          <small class="card-text">
-              Created by :  <%= article.user.username if article.user %>,
-              <%= time_ago_in_words(article.created_at)%> ,
-              last update <%= time_ago_in_words(article.updated_at)%> ago,
-            </small>
-          <div class="article-actions" align="center">
-          <%= link_to "Show Article", article_path(article), class: "card-link" %>
-          <%= link_to "Edit Article", edit_article_path(article), class: "card-link" %>
-          <%= link_to "Delete Article", article_path(article), method: :delete,
-                                      data: {confirm: "Are your sure, you want to delete article?"},
-                                      class: "card-link" %>
-          </div>
-        </div>
-
-
-
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render 'article', obj:@articles%>
