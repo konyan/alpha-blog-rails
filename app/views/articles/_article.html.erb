@@ -16,10 +16,12 @@
             </small>
           <div class="article-actions" align="center">
           <%= link_to "Show Article", article_path(article), class: "card-link" %>
-          <%= link_to "Edit Article", edit_article_path(article), class: "card-link" %>
-          <%= link_to "Delete Article", article_path(article), method: :delete,
-                                      data: {confirm: "Are your sure, you want to delete article?"},
-                                      class: "card-link" %>
+          <% if logged_in? && current_user == article.user %>
+            <%= link_to "Edit Article", edit_article_path(article), class: "card-link" %>
+            <%= link_to "Delete Article", article_path(article), method: :delete,
+                                        data: {confirm: "Are your sure, you want to delete article?"},
+                                        class: "card-link" %>
+          <% end %>
           </div>
         </div>
 

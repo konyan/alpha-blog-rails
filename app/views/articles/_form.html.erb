@@ -13,7 +13,7 @@
       </p>
 
       <p>
-        <%= f.submit "Create Article",class: "btn btn-primary"%>
+        <%= f.submit(@article.new_record? ? "Create Article" : "Edit Article",class: "btn btn-primary")%>
       </p>
     <% end%>
   </div>

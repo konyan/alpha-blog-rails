@@ -41,9 +41,11 @@
 </div>
 
 <div class="article-actions" align="center">
+  <% if logged_in? && current_user === @article.user %>
   <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
   <%= link_to "Delete Article", article_path(@article), method: :delete,
                               data: {confirm: "Are your sure, you want to delete article?"},
                               class: "btn btn-sm btn-danger" %>
+  <% end %>
   <%= link_to "View All Articles", articles_path , class: "btn btn-sm btn-success"%>
 </div>
