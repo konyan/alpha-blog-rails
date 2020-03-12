@@ -1,0 +1,20 @@
+<h1 align="center">Category New Category</h1>
+
+<%= render '/shared/errors', obj: @category%>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for @category do |f| %>
+      <div class="form-group">
+        <%= f.label :name%>
+        <%= f.text_field :name,class: "form-control", placeholder:"Category Name", autofocus: true %>
+      </div>
+      <p>
+        <%= f.submit(@category.new_record? ? "Create New Category" : "Update Category",class: "btn btn-primary")%>
+      </p>
+    <% end%>
+  </div>
+</div>
+<div class="col-xs-4 col-xs-offset-4">
+  [ <%= link_to "Back to articles listing", articles_path %> ]
+</div>

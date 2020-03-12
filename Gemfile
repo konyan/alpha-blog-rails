@@ -8,7 +8,7 @@ gem 'jquery-rails'
 
 gem 'will_paginate', '3.1.7'
 gem 'will_paginate-bootstrap4'
-
+gem 'rails-controller-testing'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
