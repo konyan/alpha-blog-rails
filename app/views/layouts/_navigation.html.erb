@@ -34,6 +34,24 @@
           <% end %>
         </div>
       </li>
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= "ADMIN" if current_user && current_user.admin? %>Category
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%# <a class="dropdown-item" href="#">Action</a> %>
+
+              <%= link_to "All Category", categories_path, class:"dropdown-item" %>
+              <% Category.all.each do |category| %>
+                <%= link_to "#{category.name}", category_path(category), class:"dropdown-item"%>
+              <% end %>
+              <% if current_user.admin? %>
+                <%= link_to "New Category", new_category_path,class:"dropdown-item" %>
+              <% end %>
+          </div>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>
