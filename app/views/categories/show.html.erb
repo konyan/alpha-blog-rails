@@ -4,6 +4,11 @@
 
 <div align="center">
   <%= will_paginate @category_articles %>
+  <% if logged_in? && current_user.admin? %>
+  <span class="badge">
+    <%= link_to "Edit", edit_category_path(@category)%>
+  </span>
+  <% end %>
 </div>
 
 <%= render 'articles/article' , obj: @category_articles%>
