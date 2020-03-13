@@ -14,6 +14,13 @@
               <%= time_ago_in_words(article.created_at)%> ,
               last update <%= time_ago_in_words(article.updated_at)%> ago,
             </small>
+
+          <% if article.categories.any? %>
+            <p>
+             Categories: <%= render article.categories %>
+            </p>
+          <% end %>
+
           <div class="article-actions" align="center">
           <%= link_to "Show Article", article_path(article), class: "card-link" %>
           <% if logged_in? && (current_user == article.user || current_user.admin?) %>
